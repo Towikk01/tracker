@@ -136,7 +136,7 @@ const Form = () => {
                     <label className="text-14 font-normal lg:text-18 leading-5 mb-2">
                         Який пристрій GPS ви обрали?
                     </label>
-                    <div className="lg:flex-row flex lg:w-full lg:justify-between">
+                    <div className="lg:flex-row flex flex-col lg:w-full lg:justify-between">
                         {options.map((option) => (
                             <label
                                 key={option}
