@@ -6,8 +6,14 @@ import Link from 'next/link';
 export default function Popup({ product }) {
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleOpen = () => setIsOpen(true);
-    const handleClose = () => setIsOpen(false);
+    const handleOpen = () => {
+        setIsOpen(true);
+        document.body.style.overflow = 'hidden';
+    };
+    const handleClose = () => {
+        setIsOpen(false);
+        document.body.style.overflow = 'unset';
+    };
 
     const features = product.modalWindow.tags;
 
@@ -17,11 +23,11 @@ export default function Popup({ product }) {
                 w="w-fit"
                 onClick={handleOpen}
                 className="bg-blue-600 text-white px-4 py-2 rounded-md"
-                text=" Дізнатись більше"
+                text="Дізнатись більше"
             />
 
             {isOpen && (
-                <div className="fixed inset-0 flex  justify-center bg-black bg-opacity-50 lg:items-center z-50 px-4 py-5">
+                <div className="fixed inset-0 flex  justify-center bg-black bg-opacity-50 lg:items-center z-[100] px-4 py-5">
                     <div className="bg-white relative lg:max-w-[1440px] rounded-3xl shadow-lg w-full lg:h-fit max-h-[90vh] overflow-y-auto p-6 lg:px-20 lg:py-10">
                         <div className="flex justify-between items-center">
                             <Title>Опис</Title>

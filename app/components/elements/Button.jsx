@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const Button = ({
     text,
@@ -9,7 +10,9 @@ const Button = ({
     w = 'w-full md:w-fit',
 }) => {
     return (
-        <button
+        <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9, rotate: '2deg' }}
             type={type}
             onClick={onClick}
             className={`text-16 px-6 py-3 ${w}  leading-6 text-nowrap font-medium rounded-[32px] ${
@@ -19,7 +22,7 @@ const Button = ({
             } ${text === 'Надіслати заявку' ? 'self-start' : ''} `}
         >
             {text}
-        </button>
+        </motion.button>
     );
 };
 

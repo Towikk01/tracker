@@ -1,3 +1,5 @@
+'use client';
+import { motion } from 'framer-motion';
 import React from 'react';
 import Title from '../elements/Title';
 import BenefitBlock from '../elements/BenefitBlock';
@@ -36,11 +38,19 @@ const data = [
 
 const AboutSection = () => {
     return (
-        <section className="flex flex-col  px-4 gap-16">
-            <Title>Можливості сервісу</Title>
-            <div className="flex flex-col lg:grid lg:grid-cols-3 gap-5">
+        <section className="flex max-w-[1440px]  flex-col  px-4 gap-16">
+            <motion.div
+                whileInView={{ y: 0, opacity: 1 }}
+                initial={{ y: 150, opacity: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+            >
+                <Title>Можливості сервісу</Title>
+            </motion.div>
+            <div className="flex flex-col z-[5] lg:grid lg:grid-cols-3 gap-5">
                 {data.map((item, idx) => (
                     <BenefitBlock
+                        idx={idx}
                         key={idx}
                         title={item.title}
                         description={item.desciption}

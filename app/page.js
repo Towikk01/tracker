@@ -13,7 +13,7 @@ export default function Home() {
         setSelectedProduct(product);
     };
     return (
-        <main className="flex gap-16 flex-col">
+        <main className="flex lg:gap-8 flex-col w-full items-center  mx-auto bg-white ">
             <Header
                 onSelectProduct={handleSelectProduct}
                 selectedProduct={selectedProduct}

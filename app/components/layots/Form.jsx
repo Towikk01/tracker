@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import Title from '../elements/Title';
 import Input from '../elements/Input';
 import Button from '../elements/Button';
+import { motion } from 'framer-motion';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useMediaQuery } from 'react-responsive';
 
 const Form = () => {
     const [formData, setFormData] = useState({
@@ -97,16 +99,40 @@ const Form = () => {
             toast.error('An error occurred. Please try again.');
         }
     };
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+    const isDesktop = useMediaQuery({ minWidth: 768 });
+    const mobileAnimation = { opacity: 1, x: 0 };
+    const desktopAnimation = { opacity: 1, y: 0 };
 
     return (
-        <div className="flex flex-col gap-16 bg-backgroundCard justify-between lg:items-center h-full w-full px-4 py-10 rounded-2xl">
-            <Title>Форма замовлення</Title>
+        <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 3, ease: 'anticipate' }}
+            className="flex flex-col max-w-[1440px] bg-opacity-75 z-[5] opacity-95 gap-16 bg-backgroundCard justify-between lg:items-center h-full w-full px-4 py-10 rounded-2xl"
+        >
+            <motion.div
+                initial={{ opacity: 0, y: -150 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7, duration: 0.7 }}
+            >
+                <Title>Форма замовлення</Title>
+            </motion.div>
             <form
                 id="form"
                 onSubmit={handleSubmit}
                 className="flex form lg:items-center flex-col gap-8 lg:w-1/2"
             >
-                <div className="flex flex-col lg:w-full items-start gap-2">
+                <motion.div
+                    className="flex flex-col lg:w-full items-start gap-2"
+                    initial={
+                        isMobile
+                            ? { y: -100, opacity: 0 }
+                            : { x: -200, opacity: 0 }
+                    }
+                    whileInView={{ x: 0, y: 0, opacity: 1 }}
+                    transition={{ delay: 1.1, duration: 1 }}
+                >
                     <label htmlFor="name">Ваше імʼя</label>
                     <Input
                         type="text"
@@ -118,8 +144,17 @@ const Form = () => {
                     {errors.name && (
                         <p className="text-red-500">{errors.name}</p>
                     )}
-                </div>
-                <div className="flex flex-col lg:w-full items-start gap-2">
+                </motion.div>
+                <motion.div
+                    className="flex flex-col lg:w-full items-start gap-2"
+                    initial={
+                        isMobile
+                            ? { y: -100, opacity: 0 }
+                            : { x: 200, opacity: 0 }
+                    }
+                    whileInView={{ x: 0, y: 0, opacity: 1 }}
+                    transition={{ delay: 1.2, duration: 1 }}
+                >
                     <label htmlFor="phone">Номер телефону</label>
                     <Input
                         type="text"
@@ -131,14 +166,26 @@ const Form = () => {
                     {errors.phone && (
                         <p className="text-red-500">{errors.phone}</p>
                     )}
-                </div>
+                </motion.div>
                 <div className="flex flex-col items-start gap-1 lg:w-full">
-                    <label className="text-14 font-normal lg:text-18 leading-5 mb-2">
+                    <motion.label
+                        className="text-14 font-normal lg:text-18 leading-5 mb-2"
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 1.2, duration: 1 }}
+                    >
                         Який пристрій GPS ви обрали?
-                    </label>
+                    </motion.label>
                     <div className="lg:flex-row flex flex-col lg:w-full lg:justify-between">
-                        {options.map((option) => (
-                            <label
+                        {options.map((option, idx) => (
+                            <motion.label
+                                initial={{ y: 100, opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                transition={{
+                                    delay: idx * 0.05 + 1,
+                                    duration: 0.3,
+                                    ease: 'backInOut',
+                                }}
                                 key={option}
                                 className={`p-2 ml-1 gap-2 flex rounded lg:text-16 transition-all duration-150 ${
                                     formData.checkedItem === option
@@ -154,10 +201,13 @@ const Form = () => {
                                     onChange={handleChange}
                                 />
                                 {option}
-                            </label>
+                            </motion.label>
                         ))}
                     </div>
-                    <label
+                    <motion.label
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        transition={{ delay: 1.1, duration: 0.8 }}
                         className={`p-2 gap-2 flex text-14 text-secondary rounded transition-all duration-150`}
                     >
                         <input
@@ -166,12 +216,22 @@ const Form = () => {
                             onChange={handleChange}
                         />{' '}
                         I accept the Terms
-                    </label>
+                    </motion.label>
                 </div>
-                <Button text="Надіслати заявку" color="blue" type="submit" />
+                <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 1, duration: 1 }}
+                >
+                    <Button
+                        text="Надіслати заявку"
+                        color="blue"
+                        type="submit"
+                    />
+                </motion.div>
             </form>
             <ToastContainer position="bottom-right" />
-        </div>
+        </motion.div>
     );
 };
 
