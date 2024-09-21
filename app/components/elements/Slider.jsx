@@ -37,7 +37,7 @@ const Slider = ({ selectedProduct }) => {
                     {images.map((img, index) => (
                         <Image
                             key={index}
-                            className="w-full z-[5] h-full object-scale-down  block shrink-0 grow-0 transition-all duration-300 ease-in-out"
+                            className="w-full lg:translate-y-20 z-[5] h-full object-scale-down  block shrink-0 grow-0 transition-all duration-300 ease-in-out"
                             src={img}
                             alt="123"
                             objectFit="cover"

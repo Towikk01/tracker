@@ -38,7 +38,7 @@ const data = [
 
 const AboutSection = () => {
     return (
-        <section className="flex max-w-[1440px]  flex-col  px-4 gap-16">
+        <section className="flex pt-8 lg:pt-0 max-w-[1440px]  flex-col  px-4 gap-16">
             <motion.div
                 whileInView={{ y: 0, opacity: 1 }}
                 initial={{ y: 150, opacity: 0 }}
