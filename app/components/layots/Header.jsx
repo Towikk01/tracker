@@ -1,17 +1,22 @@
 'use client';
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useRouter } from 'next/navigation';
 import ProductButton from '../elements/ProductButton';
 
-const links = ['Concox AT4', 'Concox WeTrack Lite', 'Concox WeTrack 2'];
+const links = [
+    { name: 'Concox AT4', slug: 'at4' },
+    { name: 'Concox WeTrack Lite', slug: 'wetrack-lite' },
+    { name: 'Concox WeTrack 2', slug: 'wetrack2' },
+];
 
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
         transition: {
-            delayChildren: 2, // Delay starting the staggered animation by 2 seconds
-            staggerChildren: 0.2, // Stagger the children animations by 0.2 seconds
+            delayChildren: 2,
+            staggerChildren: 0.2,
         },
     },
 };
@@ -30,14 +35,14 @@ const Header = ({ onSelectProduct, selectedProduct }) => {
             animate="visible"
         >
             {links.map((link, idx) => {
-                const isActive = link === selectedProduct;
+                const isActive = link.name === selectedProduct;
                 return (
                     <motion.div key={'product' + idx} variants={childVariants}>
                         <ProductButton
-                            onClick={() => onSelectProduct(link)}
+                            onClick={() => onSelectProduct(link.name)}
                             isActive={isActive}
                         >
-                            {link}
+                            {link.name}
                         </ProductButton>
                     </motion.div>
                 );

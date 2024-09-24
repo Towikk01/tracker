@@ -108,7 +108,7 @@ const Form = () => {
         <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 3, ease: 'anticipate' }}
+            transition={{ delay: 0.3, duration: 1, ease: 'anticipate' }}
             className="flex flex-col max-w-[1440px] bg-opacity-75 z-[5] opacity-95 gap-16 bg-backgroundCard justify-between lg:items-center h-full w-full px-4 py-10 rounded-2xl"
         >
             <motion.div
@@ -131,13 +131,16 @@ const Form = () => {
                             : { x: -200, opacity: 0 }
                     }
                     whileInView={{ x: 0, y: 0, opacity: 1 }}
-                    transition={{ delay: 1.1, duration: 1 }}
+                    transition={{ delay: 0.3, duration: 1 }}
                 >
-                    <label htmlFor="name">Ваше імʼя</label>
+                    <label className="text-black" htmlFor="name">
+                        Ваше імʼя
+                    </label>
                     <Input
                         type="text"
                         placeholder=""
                         name="name"
+                        className="text-black"
                         value={formData.name}
                         onChange={handleChange}
                     />
@@ -153,10 +156,13 @@ const Form = () => {
                             : { x: 200, opacity: 0 }
                     }
                     whileInView={{ x: 0, y: 0, opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 1 }}
+                    transition={{ delay: 0.3, duration: 1 }}
                 >
-                    <label htmlFor="phone">Номер телефону</label>
+                    <label className="text-black" htmlFor="phone">
+                        Номер телефону
+                    </label>
                     <Input
+                        className="text-black"
                         type="text"
                         placeholder=""
                         name="phone"
@@ -169,10 +175,10 @@ const Form = () => {
                 </motion.div>
                 <div className="flex flex-col items-start gap-1 lg:w-full">
                     <motion.label
-                        className="text-14 font-normal lg:text-18 leading-5 mb-2"
+                        className="text-14 font-normal text-black lg:text-18 leading-5 mb-2"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ delay: 1.2, duration: 1 }}
+                        transition={{ delay: 0.3, duration: 1 }}
                     >
                         Який пристрій GPS ви обрали?
                     </motion.label>
@@ -182,7 +188,7 @@ const Form = () => {
                                 initial={{ y: 100, opacity: 0 }}
                                 whileInView={{ y: 0, opacity: 1 }}
                                 transition={{
-                                    delay: idx * 0.05 + 1,
+                                    delay: idx * 0.05 + 0.5,
                                     duration: 0.3,
                                     ease: 'backInOut',
                                 }}
@@ -190,7 +196,7 @@ const Form = () => {
                                 className={`p-2 ml-1 gap-2 flex rounded lg:text-16 transition-all duration-150 ${
                                     formData.checkedItem === option
                                         ? 'bg-primary text-deep rounded-lg'
-                                        : ''
+                                        : 'text-black'
                                 }`}
                             >
                                 <input
@@ -207,7 +213,7 @@ const Form = () => {
                     <motion.label
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        transition={{ delay: 1.1, duration: 0.8 }}
+                        transition={{ delay: 0.3, duration: 0.8 }}
                         className={`p-2 gap-2 flex text-14 text-secondary rounded transition-all duration-150`}
                     >
                         <input
@@ -221,7 +227,7 @@ const Form = () => {
                 <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     whileInView={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 1, duration: 1 }}
+                    transition={{ delay: 0.3, duration: 1 }}
                 >
                     <Button
                         text="Надіслати заявку"

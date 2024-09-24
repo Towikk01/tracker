@@ -38,7 +38,7 @@ const data = [
 
 const AboutSection = () => {
     return (
-        <section className="flex pt-8 lg:pt-0 max-w-[1440px]  flex-col  px-4 gap-16">
+        <section className="flex pt-8 lg:pt-0 max-w-[1440px]   flex-col  px-4 gap-16">
             <motion.div
                 whileInView={{ y: 0, opacity: 1 }}
                 initial={{ y: 150, opacity: 0 }}
@@ -47,7 +47,7 @@ const AboutSection = () => {
             >
                 <Title>Можливості сервісу</Title>
             </motion.div>
-            <div className="flex flex-col z-[5] lg:grid lg:grid-cols-3 gap-5">
+            <div className="flex flex-col z-[4] lg:grid lg:grid-cols-3 gap-5">
                 {data.map((item, idx) => (
                     <BenefitBlock
                         idx={idx}

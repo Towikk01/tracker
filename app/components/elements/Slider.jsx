@@ -25,8 +25,10 @@ const Slider = ({ selectedProduct }) => {
     return (
         <div className="flex flex-col lg:h-full w-full gap-6">
             <div className="w-full h-full z-[5] relative">
-                <SliderButton onClick={showPrevSlide} />
-                <SliderButton onClick={showNextSlide} idx={1} />
+                <div className="w-4/6 relative mx-auto">
+                    <SliderButton onClick={showPrevSlide} />
+                    <SliderButton onClick={showNextSlide} idx={1} />
+                </div>
                 <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}

@@ -28,7 +28,7 @@ export default function Popup({ product }) {
 
             {isOpen && (
                 <div className="fixed inset-0 flex  justify-center bg-black bg-opacity-50 lg:items-center z-[100] px-4 py-5">
-                    <div className="bg-white relative lg:max-w-[1440px] rounded-3xl shadow-lg w-full lg:h-fit max-h-[90vh] overflow-y-auto p-6 lg:px-20 lg:py-10">
+                    <div className="bg-white relative lg:max-w-[1440px] rounded-3xl z-10 shadow-lg w-full lg:h-fit max-h-[90vh] overflow-y-auto p-6 lg:px-20 lg:py-10">
                         <div className="flex justify-between items-center">
                             <Title>Опис</Title>
                             <button

@@ -7,7 +7,7 @@ const BenefitBlock = ({ title, description, idx }) => {
             initial={{ y: 100, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 1 + idx * 0.09 }}
+            transition={{ duration: 0.6, delay: 0.7 + idx * 0.09 }}
             className="flex bg-[#F8F8F8] bg-opacity-80 h-[180px] lg:h-[250px] justify-between rounded-2xl flex-col items-start p-6"
         >
             <h3 className="text-deep font-medium text-18 lg:text-24">
