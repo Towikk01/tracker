@@ -1,5 +1,13 @@
 import { Poppins } from 'next/font/google';
 import './globals.css';
+import Header from './components/layots/Header';
+import Footer from './components/layots/Footer';
+import ParticlesBG from './components/layots/Particles';
+import DynamicHeroSection from './components/layots/DynamicHeroSection';
+import AboutSection from './components/layots/AboutSection';
+import Form from './components/layots/Form';
+import { motion } from 'framer-motion';
+import MainPage from './components/layots/MainPage';
 
 const poppins = Poppins({
     variable: '--font-poppins',
@@ -14,5 +22,9 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-    return <html lang="en">{children}</html>;
+    return (
+        <html lang="en">
+            <MainPage>{children}</MainPage>
+        </html>
+    );
 }

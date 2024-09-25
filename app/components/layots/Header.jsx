@@ -3,6 +3,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import ProductButton from '../elements/ProductButton';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const links = [
     { name: 'Concox AT4', slug: 'at4' },
@@ -26,7 +28,8 @@ const childVariants = {
     visible: { opacity: 1, y: 0 },
 };
 
-const Header = ({ onSelectProduct, selectedProduct }) => {
+const Header = () => {
+    const path = usePathname();
     return (
         <motion.header
             className="flex flex-row z-[5] max-w-[1440px] w-full gap-4 px-6 py-6 overflow-x-scroll md:justify-center lg:gap-8 items-center"
@@ -35,15 +38,14 @@ const Header = ({ onSelectProduct, selectedProduct }) => {
             animate="visible"
         >
             {links.map((link, idx) => {
-                const isActive = link.name === selectedProduct;
+                const isActive = link.slug === path.split('/')[1];
                 return (
                     <motion.div key={'product' + idx} variants={childVariants}>
-                        <ProductButton
-                            onClick={() => onSelectProduct(link.name)}
-                            isActive={isActive}
-                        >
-                            {link.name}
-                        </ProductButton>
+                        <Link href={`/${link.slug}`}>
+                            <ProductButton isActive={isActive}>
+                                {link.name}
+                            </ProductButton>
+                        </Link>
                     </motion.div>
                 );
             })}
