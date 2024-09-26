@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 import React from 'react';
 
-const SliderButtonImage = ({ image, onClick, isActive, idx }) => {
+const SliderButtonImage = ({ image, onClick, isActive, idx, isHome }) => {
     return (
         <motion.button
             initial={{ scale: 0, opacity: 0 }}
@@ -12,7 +12,7 @@ const SliderButtonImage = ({ image, onClick, isActive, idx }) => {
                 opacity: 1,
             }}
             transition={{
-                delay: 4 + idx * 0.1,
+                delay: isHome ? 4 + idx * 0.1 : 0.5 + idx * 0.2,
                 duration: 0.35,
                 ease: [0.42, 0, 0.58, 1],
             }}

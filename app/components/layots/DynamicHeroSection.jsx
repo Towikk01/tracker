@@ -5,19 +5,21 @@ import Description from '../elements/Description';
 import Slider from '../elements/Slider';
 import { productData } from '@/app/products';
 import { motion } from 'framer-motion';
-
-const containerVariants = {
-    visible: {
-        transition: {
-            delayChildren: 3,
-            staggerChildren: 0.1,
-            once: true,
-        },
-    },
-};
+import { usePathname } from 'next/navigation';
 
 const DynamicHeroSection = ({ selectedProduct }) => {
+    const path = usePathname();
     const product = productData[selectedProduct] || productData['Concox AT4'];
+    const isHome = path === '/';
+    const containerVariants = {
+        visible: {
+            transition: {
+                delayChildren: isHome ? 2.5 : 0.5,
+                staggerChildren: 0.1,
+                once: true,
+            },
+        },
+    };
 
     return (
         <motion.section
@@ -31,7 +33,7 @@ const DynamicHeroSection = ({ selectedProduct }) => {
                 initial={{ opacity: 0, translateY: -150 }}
                 animate={{ opacity: 1, translateY: 0 }}
                 transition={{
-                    delay: 2.5,
+                    delay: isHome ? 2.5 : 0.5,
                     duration: 0.5,
                 }}
             >
@@ -42,11 +44,11 @@ const DynamicHeroSection = ({ selectedProduct }) => {
                 className="flex flex-col  items-center z-[5] lg:w-2/5 gap-4 md:gap-2 lg:mx-auto"
                 initial={{ opacity: 0, translateY: 100 }}
                 animate={{ opacity: 1, translateY: 0 }}
-                transition={{ delay: 2.5, duration: 1 }}
+                transition={{ delay: isHome ? 2.5 : 0.5, duration: 1 }}
             >
                 <Description>{product.description}</Description>
             </motion.div>
-            <Slider selectedProduct={product} />
+            <Slider isHome={isHome} selectedProduct={product} />
         </motion.section>
     );
 };

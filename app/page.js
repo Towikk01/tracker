@@ -1,6 +1,5 @@
 import { Poppins } from 'next/font/google';
 import DynamicHeroSection from './components/layots/DynamicHeroSection';
-import { productData } from '@/app/products';
 
 const poppins = Poppins({
     variable: '--font-poppins',

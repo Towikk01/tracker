@@ -6,7 +6,7 @@ import SliderButton from './SliderButton';
 import SliderButtonImage from './SliderButtonImage';
 import PriceWithButton from './PriceWithButton';
 
-const Slider = ({ selectedProduct }) => {
+const Slider = ({ selectedProduct, isHome }) => {
     const images = selectedProduct.images;
     const [imageIndex, setImageIndex] = useState(0);
 
@@ -26,13 +26,13 @@ const Slider = ({ selectedProduct }) => {
         <div className="flex flex-col lg:h-full w-full gap-6">
             <div className="w-full h-full z-[5] relative">
                 <div className="w-4/6 relative mx-auto">
-                    <SliderButton onClick={showPrevSlide} />
+                    <SliderButton onClick={showPrevSlide} isHome={isHome} />
                     <SliderButton onClick={showNextSlide} idx={1} />
                 </div>
                 <motion.div
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
-                    transition={{ delay: 3, duration: 0.4 }}
+                    transition={{ delay: isHome ? 2.5 : 0.5, duration: 0.4 }}
                     ease="easeInOut"
                     className=" flex w-4/5 mx-auto h-4/5  overflow-hidden lg:relative lg:-top-20 flex-row"
                 >
@@ -54,6 +54,7 @@ const Slider = ({ selectedProduct }) => {
                 <div className="flex top-0 flex-row gap-4 justify-between lg:mr-4">
                     {images.slice(1).map((img, idx) => (
                         <SliderButtonImage
+                            isHome={isHome}
                             onClick={() => setImageIndex(idx + 1)}
                             key={idx}
                             idx={idx}
@@ -62,7 +63,7 @@ const Slider = ({ selectedProduct }) => {
                         />
                     ))}
                 </div>
-                <PriceWithButton product={selectedProduct} />
+                <PriceWithButton isHome={isHome} product={selectedProduct} />
             </div>
         </div>
     );
