@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 const links = [
-    { name: 'Concox AT4', slug: 'at4' },
+    // { name: 'Concox AT4', slug: 'at4' },
     { name: 'Concox WeTrack Lite', slug: 'wetrack-lite' },
     { name: 'Concox WeTrack 2', slug: 'wetrack2' },
 ];

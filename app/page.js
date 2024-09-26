@@ -8,5 +8,5 @@ const poppins = Poppins({
     subsets: ['latin'],
 });
 export default function Home() {
-    return <DynamicHeroSection selectedProduct="Concox AT4" />;
+    return <DynamicHeroSection selectedProduct="wetrack-lite" />;
 }

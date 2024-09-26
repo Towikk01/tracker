@@ -7,7 +7,7 @@ const SliderButton = ({ idx, onClick, isHome }) => {
         <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: isHome ? 2.5 : 0.5, duration: 1 }}
+            transition={{ delay: 2.5, duration: 1 }}
             className={`bg-transparent z-20 top-12 text-24 text-black rounded-full p-4 flex border-deep border-[2px] items-center justify-center md:top-56 absolute w-1.5 h-3 ${
                 idx > 0 ? 'rotate-180 right-0' : 'left-0'
             }`}
